@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let order of orders">
+    Order {{order.id}}: {{order.purchaser}}
+    <br>
+    <app-products [products]="order.products"></app-products>
+    <br>
+  </li>
+</ul>
