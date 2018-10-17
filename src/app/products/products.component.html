@@ -1,11 +1,8 @@
 <div *ngIf="products">
-
-  <ul>
-    <li *ngFor="let product of products">
-      Product {{product.id}}: {{product.name}}
-      <br>
-
-    </li>
-  </ul>
-
+  <mat-list>
+    <div *ngFor="let product of products">
+      <mat-list-item>{{product.name}}</mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
 </div>

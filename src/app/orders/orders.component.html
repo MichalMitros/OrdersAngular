@@ -1,8 +1,14 @@
-<ul>
-  <li *ngFor="let order of orders">
-    Order {{order.id}}: {{order.purchaser}}
-    <br>
+<mat-card>All orders:</mat-card>
+<mat-accordion>
+  <mat-expansion-panel *ngFor='let order of orders'>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ order.purchaser }}
+      </mat-panel-title>
+      <mat-panel-description>
+        Products: {{ order.products.length }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
     <app-products [products]="order.products"></app-products>
-    <br>
-  </li>
-</ul>
+  </mat-expansion-panel>
+</mat-accordion>
