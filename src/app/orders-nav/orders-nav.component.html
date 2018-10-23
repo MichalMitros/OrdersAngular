@@ -8,8 +8,8 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="" style="text-indent: 0.3cm"><i class="material-icons">library_books</i>All orders</a>
-      <a mat-list-item href="" style="text-indent: 0.3cm"><i class="material-icons">library_add</i>Add new order</a>
+      <a mat-list-item href="/all-orders" style="text-indent: 0.3cm"><i class="material-icons">library_books</i>All orders</a>
+      <a mat-list-item href="/add-new-order" style="text-indent: 0.3cm"><i class="material-icons">library_add</i>Add new order</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,7 +25,7 @@
       <span>OrdersAngular</span>
     </mat-toolbar>
 
-    <app-orders></app-orders>
+    <router-outlet></router-outlet>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

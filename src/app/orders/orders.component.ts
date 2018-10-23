@@ -3,7 +3,7 @@ import { Order } from '../order';
 import { ORDERS } from '../mock-orders';
 import { ProductsComponent } from '../products/products.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-orders',

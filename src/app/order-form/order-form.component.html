@@ -1,0 +1,41 @@
+<mat-card>Add new order</mat-card>
+
+
+
+<mat-horizontal-stepper [linear]="true" class="order-stepper">
+  <mat-step [stepControl]="purchaserForm">
+    <form [formGroup]="purchaserForm">
+      <ng-template matStepLabel>Fill out purchaser's data</ng-template>
+      <mat-form-field class="order-full-width">
+        <input matInput placeholder="Company Name" type="text" formControlName="company"> <br />
+      </mat-form-field>
+      <mat-form-field class="order-full-width">
+        <input matInput placeholder="Email" type="text" formControlName="email"> <br />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="productsForm">
+    <form [formGroup]="productsForm">
+      <ng-template matStepLabel>Add products to the order</ng-template>
+      <mat-form-field class="order-full-width">
+        <input matInput placeholder="Product" type="text" formControlName="product"> <br />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="onFormSubmit()" [routerLink]="['']">Add order</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

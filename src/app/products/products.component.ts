@@ -9,6 +9,7 @@ import { Product } from  '../product';
 })
 export class ProductsComponent implements OnInit {
   @Input() products: Product[];
+  displayedColumns: string[] = ['id', 'name'];
 
   constructor() { }
 

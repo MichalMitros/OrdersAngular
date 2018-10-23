@@ -2,14 +2,6 @@
 
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
-body {
-    background-color: #414141;
-    color: #ffffff;
-}
-
-h1 {
-    color: #C71585;
-}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
