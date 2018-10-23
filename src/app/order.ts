@@ -3,5 +3,8 @@ import { Product } from './product';
 export class Order {
   id: number;
   purchaser: string;
-  products: Product[];
+  products: {
+    product: Product,
+    amount: number
+  }[];
 }

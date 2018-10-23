@@ -19,14 +19,23 @@
   </mat-step>
 
   <mat-step [stepControl]="productsForm">
-    <form [formGroup]="productsForm">
+
       <ng-template matStepLabel>Add products to the order</ng-template>
-      <mat-form-field class="order-full-width">
-        <input matInput placeholder="Product" type="text" formControlName="product"> <br />
-      </mat-form-field>
+      <br />
+      <mat-select class="selector" placeholder="Select product" [(ngModel)]="selectedProduct">
+        <mat-option *ngFor="let product of PRODUCTS_LIST" [value]="product.id">
+          {{product.name}}
+        </mat-option>
+      </mat-select>
+      <button mat-button *ngIf='selectedProduct != null' (click)='onProductAdd()'>Add</button>  <br />
+      <br />
+      <app-products [products]="products"></app-products>
+      <br />
+      <form [formGroup]="productsForm">
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext *ngIf='products'>Next</button>
       </div>
+
     </form>
   </mat-step>
 

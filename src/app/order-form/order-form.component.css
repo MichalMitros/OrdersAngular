@@ -18,3 +18,8 @@
 .button {
   margin-right: 25%;
 }
+
+.selector {
+  min-width: 50px;
+  max-width: 30%;
+}

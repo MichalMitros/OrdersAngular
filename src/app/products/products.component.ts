@@ -8,8 +8,11 @@ import { Product } from  '../product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  @Input() products: Product[];
-  displayedColumns: string[] = ['id', 'name'];
+  @Input() products: {
+    product: Product,
+    amount: number
+  }[];
+  displayedColumns: string[] = ['id', 'name', 'amount'];
 
   constructor() { }
 
