@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
 import { PRODUCTS } from '../mock-products';
+import { ORDERS } from '../mock-orders';
 
 @Component({
   selector: 'app-order-form',
@@ -18,6 +19,7 @@ export class OrderFormComponent implements OnInit {
   }[];
   PRODUCTS_LIST = PRODUCTS;
   selectedProduct: number;
+  amount: number;
 
   constructor(public formBuilder: FormBuilder,) {
     this.purchaserForm = this.formBuilder.group( {
@@ -31,24 +33,33 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit() {
     this.products = [];
+    this.amount = 1;
   }
 
   onProductAdd() {
     let product: Product;
-    if(this.selectedProduct != null) {
-      for(let i=0; i<this.PRODUCTS_LIST.length; i++) {
-        if(this.PRODUCTS_LIST[i].id == this.selectedProduct) {
-          product = this.PRODUCTS_LIST[i];
-          break;
-        }
+    let isNewProduct : boolean = true;
+    for(let i=0; i<this.PRODUCTS_LIST.length; i++) {
+      if(this.PRODUCTS_LIST[i].id == this.selectedProduct) {
+        product = this.PRODUCTS_LIST[i];
+        break;
       }
-      this.products.push({ product: product, amount: 1 });
-      console.log(this.products);
+    }
+
+    for(let i=0; i<this.products.length; i++) {
+      if(this.products[i].product.id == product.id) {
+        isNewProduct = false;
+        this.products[i].amount += this.amount;
+        break;
+      }
+    }
+    if(isNewProduct) {
+      this.products.push({ product: product, amount: this.amount });
     }
   }
 
   onFormSubmit() {
-    console.log(this.purchaserForm.value);
+    ORDERS.push({ id: ORDERS.length+1, purchaser: this.purchaserForm.value.company, products: this.products });
   }
 
 }

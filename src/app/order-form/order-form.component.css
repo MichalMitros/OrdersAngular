@@ -23,3 +23,8 @@
   min-width: 50px;
   max-width: 30%;
 }
+
+.inputAmount {
+  min-width: 50px;
+  max-width: 100px;
+}
