@@ -1,4 +1,4 @@
-<mat-card>All orders:</mat-card>
+<mat-card><h3>All orders:</h3></mat-card>
 <mat-accordion>
   <mat-expansion-panel *ngFor='let order of orders'>
     <mat-expansion-panel-header>
@@ -10,10 +10,11 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-tab-group>
-      <mat-tab label="Purchaser">
+      <mat-tab label="Details">
         <div class="details">
           <br />
           <mat-divider></mat-divider>
+          <b>ID: </b>{{order.id}} <br />
           <b>Company: </b>{{order.purchaser}} <br />
           <div *ngIf='order.email.length > 0'>
             <b>Email: </b>{{order.email}} <br />

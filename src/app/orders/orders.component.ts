@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../order';
-import { ORDERS } from '../mock-orders';
+import { OrderService } from '../order.service';
 import { ProductsComponent } from '../products/products.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
+import { ORDERS } from '../mock-orders';
 
 @Component({
   selector: 'app-orders',
@@ -11,11 +12,21 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  orders = ORDERS;
+  orders: Order[];
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+    this.getOrders();
+  }
+
+  deleteFirstOrder(): void {
+    ORDERS.shift();
+  }
+
+  getOrders(): void {
+    this.orderService.getOrders()
+      .subscribe(orders => this.orders = orders);
   }
 
 }
