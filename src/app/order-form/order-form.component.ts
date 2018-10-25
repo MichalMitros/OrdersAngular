@@ -12,7 +12,6 @@ import { ORDERS } from '../mock-orders';
 })
 export class OrderFormComponent implements OnInit {
   purchaserForm: FormGroup;
-  productsForm: FormGroup;
   products: {
     product: Product,
     amount: number
@@ -25,9 +24,6 @@ export class OrderFormComponent implements OnInit {
     this.purchaserForm = this.formBuilder.group( {
       company: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.email]]
-    });
-    this.productsForm = this.formBuilder.group( {
-      product: ['', [Validators.required]]
     });
   }
 
@@ -59,7 +55,7 @@ export class OrderFormComponent implements OnInit {
   }
 
   onFormSubmit() {
-    ORDERS.push({ id: ORDERS.length+1, purchaser: this.purchaserForm.value.company, products: this.products });
+    ORDERS.push({ id: ORDERS.length+1, purchaser: this.purchaserForm.value.company, email: this.purchaserForm.value.email, products: this.products });
   }
 
 }

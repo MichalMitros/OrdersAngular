@@ -19,7 +19,6 @@
   </mat-step>
 
   <mat-step>
-
       <ng-template matStepLabel>Add products to the order</ng-template>
       <br />
       <mat-select class="selector" placeholder="Select product" [(ngModel)]="selectedProduct">
@@ -32,17 +31,14 @@
       <br />
       <app-products [products]="products"></app-products>
       <br />
-      <form [formGroup]="productsForm">
       <div>
         <button mat-button matStepperNext *ngIf='products.length'>Next</button>
       </div>
-
-    </form>
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    Do you want to add new order with {{products.length}} products?
+    Do you want to add new order with {{products.length}} product(s)?
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="onFormSubmit()" [routerLink]="['']">Add order</button>
