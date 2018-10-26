@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
-import { PRODUCTS } from '../mock-products';
+import { ProductService } from '../product.service';
 import { ORDERS } from '../mock-orders';
 
 @Component({
@@ -16,11 +16,11 @@ export class OrderFormComponent implements OnInit {
     product: Product,
     amount: number
   }[];
-  PRODUCTS_LIST = PRODUCTS;
+  PRODUCTS_LIST: Product[];
   selectedProduct: number;
   amount: number;
 
-  constructor(public formBuilder: FormBuilder,) {
+  constructor(public formBuilder: FormBuilder, private productService: ProductService) {
     this.purchaserForm = this.formBuilder.group( {
       company: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.email]]
@@ -30,6 +30,7 @@ export class OrderFormComponent implements OnInit {
   ngOnInit() {
     this.products = [];
     this.amount = 1;
+    this.getProductsList();
   }
 
   onProductAdd() {
@@ -56,6 +57,11 @@ export class OrderFormComponent implements OnInit {
 
   onFormSubmit() {
     ORDERS.push({ id: ORDERS.length+1, purchaser: this.purchaserForm.value.company, email: this.purchaserForm.value.email, products: this.products });
+  }
+
+  getProductsList(): void {
+    this.productService.getProducts()
+      .subscribe(productsList => this.PRODUCTS_LIST = productsList);
   }
 
 }

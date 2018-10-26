@@ -26,11 +26,10 @@
           {{product.name}}
         </mat-option>
       </mat-select>
-      Amount:<input matInput class="inputAmount" value="1" [(ngModel)]="amount" type="number"> <br />
+      Amount:<input matInput class="inputAmount" value="1" [(ngModel)]="amount" type="number"> <br /><br />
       <button mat-button *ngIf='selectedProduct != null && amount>0' (click)='onProductAdd()'>Add</button>  <br />
       <br />
-      <app-products [products]="products"></app-products>
-      <br />
+
       <div>
         <button mat-button matStepperNext *ngIf='products.length'>Next</button>
       </div>
